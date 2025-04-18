@@ -118,7 +118,7 @@
         "id": "9c4a0d5a.7e8c1",
         "type": "inject",
         "z": "f6f2187d.f17ca8",
-        "name": "Volume 25%",
+        "name": "Volume 50%",
         "props": [
             {
                 "p": "payload"
