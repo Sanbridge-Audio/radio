@@ -1,0 +1,293 @@
+[
+    {
+        "id": "813ce24511f4e45b",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "238164dacc2f3e2c",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2bddea5507d7d95a",
+        "type": "esphome-device",
+        "name": "Office",
+        "host": "192.168.1.206",
+        "port": 6053,
+        "reconnect": 15,
+        "loglevel": "0",
+        "logdump": false,
+        "ble": false
+    },
+    {
+        "id": "e1d4e5f5.0d6d58",
+        "type": "http request",
+        "z": "f6f2187d.f17ca8",
+        "name": "LMS JSON-RPC",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://192.168.1.183:9008/jsonrpc.js",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 550,
+        "y": 360,
+        "wires": [
+            [
+                "d5a7c5e3.8e8b6",
+                "e3d8e1c0.0a5c4"
+            ]
+        ]
+    },
+    {
+        "id": "d5a7c5e3.8e8b6",
+        "type": "json",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 710,
+        "y": 360,
+        "wires": [
+            [
+                "e3d8e1c0.0a5c4",
+                "b9c0b6d0.6a6a5"
+            ]
+        ]
+    },
+    {
+        "id": "e3d8e1c0.0a5c4",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "Debug Response",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 930,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "b9c0b6d0.6a6a5",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Parse Status",
+        "func": "const status = msg.payload.result;\nmsg.payload = {\n    \"artist\": status.artist,\n    \"title\": status.title,\n    \"album\": status.album,\n    \"volume\": status[\"mixer volume\"],\n    \"muted\": status[\"mixer muting\"],\n    \"duration\": status.duration,\n    \"time\": status.time,\n    \"state\": status.mode\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 930,
+        "y": 460,
+        "wires": [
+            [
+                "e3d8e1c0.0a5c4"
+            ]
+        ]
+    },
+    {
+        "id": "fdfb0a8a.0c1d3",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Mute Toggle",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "{\"action\":\"mute\"}",
+        "payloadType": "json",
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "a1e9a0c0.3a0d"
+            ]
+        ]
+    },
+    {
+        "id": "9c4a0d5a.7e8c1",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Volume 50%",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "{\"action\":\"volume\",\"value\":25}",
+        "payloadType": "json",
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "a1e9a0c0.3a0d"
+            ]
+        ]
+    },
+    {
+        "id": "7f6a1a2c.1a5c3c",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Play/Pause",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "{\"action\":\"play\"}",
+        "payloadType": "json",
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "a1e9a0c0.3a0d"
+            ]
+        ]
+    },
+    {
+        "id": "dcc0a8c6.4c8e48",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Next Track",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "{\"action\":\"next\"}",
+        "payloadType": "json",
+        "x": 120,
+        "y": 360,
+        "wires": [
+            [
+                "a1e9a0c0.3a0d"
+            ]
+        ]
+    },
+    {
+        "id": "a3f2a0d9.7a4a58",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Get Status",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "{\"action\":\"status\"}",
+        "payloadType": "json",
+        "x": 120,
+        "y": 520,
+        "wires": [
+            [
+                "a1e9a0c0.3a0d"
+            ]
+        ]
+    },
+    {
+        "id": "a1e9a0c0.3a0d",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Build Command",
+        "func": "const playerId = \"b8:27:eb:1c:39:1d\"; // REPLACE WITH YOUR PLAYER ID\nconst action = msg.payload.action;\nconst value = msg.payload.value;\n\nlet command;\nswitch(action) {\n    case 'mute':\n        command = [\"mixer\", \"muting\", value || \"toggle\"];\n        break;\n    case 'volume':\n        command = [\"mixer\", \"volume\", value];\n        break;\n    case 'play':\n        command = [\"play\"];\n        break;\n    case 'pause':\n        command = [\"pause\"];\n        break;\n    case 'next':\n        command = [\"playlist\", \"index\", \"+1\"];\n        break;\n    case 'previous':\n        command = [\"playlist\", \"index\", \"-1\"];\n        break;\n    case 'status':\n        command = [\"status\", \"-\", 1, \"tags:cgABbehldiqtyrSuoKLN\"];\n        break;\n}\n\nmsg.payload = {\n    \"id\": 1,\n    \"method\": \"slim.request\",\n    \"params\": [playerId, command]\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "e1d4e5f5.0d6d58"
+            ]
+        ]
+    },
+    {
+        "id": "57fd36b9a5824e2f",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Previous Track",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "{\"action\":\"previous\"}",
+        "payloadType": "json",
+        "x": 140,
+        "y": 400,
+        "wires": [
+            [
+                "a1e9a0c0.3a0d"
+            ]
+        ]
+    },
+    {
+        "id": "1a0693acfac0c1a5",
+        "type": "esphome-in",
+        "z": "238164dacc2f3e2c",
+        "name": "Office",
+        "device": "2bddea5507d7d95a",
+        "entity": "1315184542",
+        "topic": "",
+        "bleaddress": "",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "c96b26618f36c144"
+            ]
+        ]
+    },
+    {
+        "id": "c96b26618f36c144",
+        "type": "debug",
+        "z": "238164dacc2f3e2c",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 220,
+        "wires": []
+    }
+]

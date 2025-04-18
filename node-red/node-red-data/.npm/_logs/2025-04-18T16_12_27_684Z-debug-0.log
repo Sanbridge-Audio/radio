@@ -1,0 +1,85 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.8.2
+2 info using node@v20.19.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/.npmrc
+5 silly config load:file:/usr/src/node-red/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install node-red-contrib-esphome@0.2.9
+8 verbose argv "install" "--no-audit" "--no-update-notifier" "--no-fund" "--save" "--save-prefix" "~" "--omit" "dev" "--engine-strict" "node-red-contrib-esphome@0.2.9"
+9 verbose logfile logs-max:10 dir:/data/.npm/_logs/2025-04-18T16_12_27_684Z-
+10 verbose logfile /data/.npm/_logs/2025-04-18T16_12_27_684Z-debug-0.log
+11 silly packumentCache heap:247988224 maxSize:61997056 maxEntrySize:30998528
+12 silly logfile done cleaning log files
+13 silly idealTree buildDeps
+14 silly fetch manifest node-red-contrib-esphome@0.2.9
+15 silly packumentCache full:https://registry.npmjs.org/node-red-contrib-esphome cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-esphome 944ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/node-red-contrib-esphome set size:undefined disposed:false
+18 silly placeDep ROOT node-red-contrib-esphome@0.2.9 OK for: node-red-project@0.0.1 want: 0.2.9
+19 silly fetch manifest @2colors/esphome-native-api@1.3.2
+20 silly packumentCache full:https://registry.npmjs.org/@2colors%2fesphome-native-api cache-miss
+21 http fetch GET 200 https://registry.npmjs.org/@2colors%2fesphome-native-api 749ms (cache miss)
+22 silly packumentCache full:https://registry.npmjs.org/@2colors%2fesphome-native-api set size:undefined disposed:false
+23 silly placeDep ROOT @2colors/esphome-native-api@1.3.2 OK for: node-red-contrib-esphome@0.2.9 want: 1.3.2
+24 silly fetch manifest @richardhopton/noise-c.wasm@^0.5.0
+25 silly packumentCache full:https://registry.npmjs.org/@richardhopton%2fnoise-c.wasm cache-miss
+26 silly fetch manifest google-protobuf@^3.21.2
+27 silly packumentCache full:https://registry.npmjs.org/google-protobuf cache-miss
+28 silly fetch manifest multicast-dns@^7.2.5
+29 silly packumentCache full:https://registry.npmjs.org/multicast-dns cache-miss
+30 http fetch GET 200 https://registry.npmjs.org/multicast-dns 284ms (cache miss)
+31 silly packumentCache full:https://registry.npmjs.org/multicast-dns set size:undefined disposed:false
+32 http fetch GET 200 https://registry.npmjs.org/google-protobuf 315ms (cache miss)
+33 silly packumentCache full:https://registry.npmjs.org/google-protobuf set size:undefined disposed:false
+34 http fetch GET 200 https://registry.npmjs.org/@richardhopton%2fnoise-c.wasm 776ms (cache miss)
+35 silly packumentCache full:https://registry.npmjs.org/@richardhopton%2fnoise-c.wasm set size:undefined disposed:false
+36 silly placeDep ROOT @richardhopton/noise-c.wasm@0.5.0 OK for: @2colors/esphome-native-api@1.3.2 want: ^0.5.0
+37 silly placeDep ROOT google-protobuf@3.21.4 OK for: @2colors/esphome-native-api@1.3.2 want: ^3.21.2
+38 silly placeDep ROOT multicast-dns@7.2.5 OK for: @2colors/esphome-native-api@1.3.2 want: ^7.2.5
+39 silly fetch manifest dns-packet@^5.2.2
+40 silly packumentCache full:https://registry.npmjs.org/dns-packet cache-miss
+41 silly fetch manifest thunky@^1.0.2
+42 silly packumentCache full:https://registry.npmjs.org/thunky cache-miss
+43 http fetch GET 200 https://registry.npmjs.org/thunky 93ms (cache miss)
+44 silly packumentCache full:https://registry.npmjs.org/thunky set size:undefined disposed:false
+45 http fetch GET 200 https://registry.npmjs.org/dns-packet 143ms (cache miss)
+46 silly packumentCache full:https://registry.npmjs.org/dns-packet set size:undefined disposed:false
+47 silly placeDep ROOT dns-packet@5.6.1 OK for: multicast-dns@7.2.5 want: ^5.2.2
+48 silly placeDep ROOT thunky@1.1.0 OK for: multicast-dns@7.2.5 want: ^1.0.2
+49 silly fetch manifest @leichtgewicht/ip-codec@^2.0.1
+50 silly packumentCache full:https://registry.npmjs.org/@leichtgewicht%2fip-codec cache-miss
+51 http fetch GET 200 https://registry.npmjs.org/@leichtgewicht%2fip-codec 80ms (cache miss)
+52 silly packumentCache full:https://registry.npmjs.org/@leichtgewicht%2fip-codec set size:undefined disposed:false
+53 silly placeDep ROOT @leichtgewicht/ip-codec@2.0.5 OK for: dns-packet@5.6.1 want: ^2.0.1
+54 silly reify moves {}
+55 silly tarball no local data for @leichtgewicht/ip-codec@https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.5.tgz. Extracting by manifest.
+56 silly tarball no local data for dns-packet@https://registry.npmjs.org/dns-packet/-/dns-packet-5.6.1.tgz. Extracting by manifest.
+57 silly tarball no local data for thunky@https://registry.npmjs.org/thunky/-/thunky-1.1.0.tgz. Extracting by manifest.
+58 silly tarball no local data for multicast-dns@https://registry.npmjs.org/multicast-dns/-/multicast-dns-7.2.5.tgz. Extracting by manifest.
+59 silly tarball no local data for @richardhopton/noise-c.wasm@https://registry.npmjs.org/@richardhopton/noise-c.wasm/-/noise-c.wasm-0.5.0.tgz. Extracting by manifest.
+60 silly tarball no local data for google-protobuf@https://registry.npmjs.org/google-protobuf/-/google-protobuf-3.21.4.tgz. Extracting by manifest.
+61 silly tarball no local data for @2colors/esphome-native-api@https://registry.npmjs.org/@2colors/esphome-native-api/-/esphome-native-api-1.3.2.tgz. Extracting by manifest.
+62 silly tarball no local data for node-red-contrib-esphome@https://registry.npmjs.org/node-red-contrib-esphome/-/node-red-contrib-esphome-0.2.9.tgz. Extracting by manifest.
+63 http fetch GET 200 https://registry.npmjs.org/thunky/-/thunky-1.1.0.tgz 571ms (cache miss)
+64 http fetch GET 200 https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.5.tgz 590ms (cache miss)
+65 http fetch GET 200 https://registry.npmjs.org/dns-packet/-/dns-packet-5.6.1.tgz 594ms (cache miss)
+66 http fetch GET 200 https://registry.npmjs.org/multicast-dns/-/multicast-dns-7.2.5.tgz 623ms (cache miss)
+67 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-esphome/-/node-red-contrib-esphome-0.2.9.tgz 857ms (cache miss)
+68 http fetch GET 200 https://registry.npmjs.org/google-protobuf/-/google-protobuf-3.21.4.tgz 882ms (cache miss)
+69 http fetch GET 200 https://registry.npmjs.org/@richardhopton/noise-c.wasm/-/noise-c.wasm-0.5.0.tgz 940ms (cache miss)
+70 http fetch GET 200 https://registry.npmjs.org/@2colors/esphome-native-api/-/esphome-native-api-1.3.2.tgz 1033ms (cache miss)
+71 silly ADD node_modules/@leichtgewicht/ip-codec
+72 silly ADD node_modules/thunky
+73 silly ADD node_modules/dns-packet
+74 silly ADD node_modules/multicast-dns
+75 silly ADD node_modules/google-protobuf
+76 silly ADD node_modules/@richardhopton/noise-c.wasm
+77 silly ADD node_modules/@2colors/esphome-native-api
+78 silly ADD node_modules/node-red-contrib-esphome
+79 verbose cwd /data
+80 verbose os Linux 6.12.20+rpt-rpi-v7
+81 verbose node v20.19.0
+82 verbose npm  v10.8.2
+83 verbose exit 0
+84 info ok

@@ -1,1 +1,22 @@
-s
+#version: "3.7"
+services:
+  node-red:
+    image: nodered/node-red:latest
+    environment:
+      - TZ=America/New_York
+    ports:
+      - "1880:1880"
+    networks:
+      - node-red-net
+    volumes:
+      - ./node-red-data:/data
+#  gpiod:
+#    image: corbosman/pigpiod
+#    privileged: true
+#    networks:
+#      - node-red-net
+#    restart: unless-stopped
+# volumes:
+#   node-red-data:
+networks:
+  node-red-net:
