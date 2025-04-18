@@ -15,6 +15,14 @@
         "env": []
     },
     {
+        "id": "521b880110ad2a82",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "2bddea5507d7d95a",
         "type": "esphome-device",
         "name": "Office",
@@ -24,6 +32,14 @@
         "loglevel": "0",
         "logdump": false,
         "ble": false
+    },
+    {
+        "id": "ed6bbf9d05148c6d",
+        "type": "mpd2-server",
+        "name": "Desktop Radio",
+        "host": "192.168.1.212",
+        "port": 6600,
+        "password": ""
     },
     {
         "id": "e1d4e5f5.0d6d58",
@@ -280,6 +296,72 @@
         "statusType": "auto",
         "x": 400,
         "y": 220,
+        "wires": []
+    },
+    {
+        "id": "8ae0d1af6f438c77",
+        "type": "esphome-in",
+        "z": "238164dacc2f3e2c",
+        "name": "Volume Knob",
+        "device": "2bddea5507d7d95a",
+        "entity": "352477991",
+        "topic": "",
+        "bleaddress": "",
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "4f7699b6b59a2579"
+            ]
+        ]
+    },
+    {
+        "id": "4f7699b6b59a2579",
+        "type": "debug",
+        "z": "238164dacc2f3e2c",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "5dc3bbd818103ef5",
+        "type": "esphome-in",
+        "z": "238164dacc2f3e2c",
+        "name": "Start Button",
+        "device": "2bddea5507d7d95a",
+        "entity": "2344154970",
+        "topic": "",
+        "bleaddress": "",
+        "x": 159,
+        "y": 410,
+        "wires": [
+            [
+                "e32ecb971068944f"
+            ]
+        ]
+    },
+    {
+        "id": "e32ecb971068944f",
+        "type": "debug",
+        "z": "238164dacc2f3e2c",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 404,
+        "y": 408,
         "wires": []
     }
 ]

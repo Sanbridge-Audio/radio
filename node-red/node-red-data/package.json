@@ -4,6 +4,7 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-        "node-red-contrib-esphome": "~0.2.9"
+        "node-red-contrib-esphome": "~0.2.9",
+        "node-red-contrib-mpd2": "~1.0.9"
     }
 }

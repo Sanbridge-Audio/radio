@@ -6,12 +6,22 @@
                 "view-store-position": false,
                 "view-show-grid": true,
                 "view-snap-grid": true,
-                "view-grid-size": 20,
+                "view-grid-size": "20",
                 "view-node-status": true,
                 "view-node-show-label": true,
                 "view-show-tips": true,
                 "view-show-welcome-tours": true
+            },
+            "tours": {
+                "welcome": "4.0.9"
             }
+        },
+        "debug": {
+            "filter": "filterSelected",
+            "filteredNodes": [
+                "e3d8e1c0.0a5c4",
+                "4f7699b6b59a2579"
+            ]
         }
     }
 }

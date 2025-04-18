@@ -426,5 +426,55 @@
                 "file": "/usr/src/node-red/node_modules/@node-red/nodes/core/storage/23-watch.js"
             }
         }
+    },
+    "node-red-contrib-esphome": {
+        "name": "node-red-contrib-esphome",
+        "version": "0.2.9",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "api": {
+                "name": "api",
+                "types": [],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-esphome",
+                "file": "/data/node_modules/node-red-contrib-esphome/build/nodes/api.js"
+            },
+            "device": {
+                "name": "device",
+                "types": [
+                    "esphome-device"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-esphome",
+                "file": "/data/node_modules/node-red-contrib-esphome/build/nodes/device.js"
+            },
+            "in": {
+                "name": "in",
+                "types": [
+                    "esphome-in"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-esphome",
+                "file": "/data/node_modules/node-red-contrib-esphome/build/nodes/in.js"
+            },
+            "out": {
+                "name": "out",
+                "types": [
+                    "esphome-out"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-esphome",
+                "file": "/data/node_modules/node-red-contrib-esphome/build/nodes/out.js"
+            }
+        }
     }
 }
