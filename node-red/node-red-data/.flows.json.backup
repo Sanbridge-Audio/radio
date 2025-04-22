@@ -17,7 +17,7 @@
     {
         "id": "de6f18bf45cc2384",
         "type": "tab",
-        "label": "Flow 2",
+        "label": "Volume",
         "disabled": false,
         "info": "",
         "env": []
@@ -399,7 +399,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
+        "x": 770,
         "y": 220,
         "wires": []
     },
@@ -412,7 +412,7 @@
         "entity": "3355093594",
         "topic": "",
         "bleaddress": "",
-        "x": 150,
+        "x": 90,
         "y": 220,
         "wires": [
             [
@@ -446,7 +446,7 @@
         "blockInputOverrides": true,
         "domain": "media_player",
         "service": "volume_set",
-        "x": 510,
+        "x": 530,
         "y": 220,
         "wires": [
             [
@@ -465,7 +465,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
+        "x": 290,
         "y": 220,
         "wires": [
             [

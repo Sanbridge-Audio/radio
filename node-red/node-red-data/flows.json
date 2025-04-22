@@ -7,17 +7,9 @@
         "info": ""
     },
     {
-        "id": "238164dacc2f3e2c",
-        "type": "tab",
-        "label": "Flow 2",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "de6f18bf45cc2384",
         "type": "tab",
-        "label": "Flow 2",
+        "label": "Volume",
         "disabled": false,
         "info": "",
         "env": []
@@ -289,84 +281,6 @@
             [
                 "a1e9a0c0.3a0d"
             ]
-        ]
-    },
-    {
-        "id": "4f7699b6b59a2579",
-        "type": "debug",
-        "z": "238164dacc2f3e2c",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 400,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "e32ecb971068944f",
-        "type": "debug",
-        "z": "238164dacc2f3e2c",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 404,
-        "y": 408,
-        "wires": []
-    },
-    {
-        "id": "ed23088fbf647cab",
-        "type": "esphome-in",
-        "z": "238164dacc2f3e2c",
-        "name": "Volume Knob",
-        "device": "e2244eb88135572b",
-        "entity": "3355093594",
-        "topic": "",
-        "bleaddress": "",
-        "x": 150,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4ff7bb286816998b",
-        "type": "api-call-service",
-        "z": "238164dacc2f3e2c",
-        "name": "",
-        "server": "28ac4b4cefc21e9b",
-        "version": 7,
-        "debugenabled": false,
-        "action": "media_player.volume_set",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "media_player.desk"
-        ],
-        "labelId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "media_player",
-        "service": "volume_set",
-        "x": 410,
-        "y": 220,
-        "wires": [
-            []
         ]
     },
     {
