@@ -7,17 +7,17 @@
         "info": ""
     },
     {
-        "id": "238164dacc2f3e2c",
+        "id": "de6f18bf45cc2384",
         "type": "tab",
-        "label": "Flow 2",
+        "label": "Volume",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "de6f18bf45cc2384",
+        "id": "d3d8fc31a710b082",
         "type": "tab",
-        "label": "Volume",
+        "label": "Play/Pause",
         "disabled": false,
         "info": "",
         "env": []
@@ -292,84 +292,6 @@
         ]
     },
     {
-        "id": "4f7699b6b59a2579",
-        "type": "debug",
-        "z": "238164dacc2f3e2c",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 400,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "e32ecb971068944f",
-        "type": "debug",
-        "z": "238164dacc2f3e2c",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 404,
-        "y": 408,
-        "wires": []
-    },
-    {
-        "id": "ed23088fbf647cab",
-        "type": "esphome-in",
-        "z": "238164dacc2f3e2c",
-        "name": "Volume Knob",
-        "device": "e2244eb88135572b",
-        "entity": "3355093594",
-        "topic": "",
-        "bleaddress": "",
-        "x": 150,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4ff7bb286816998b",
-        "type": "api-call-service",
-        "z": "238164dacc2f3e2c",
-        "name": "",
-        "server": "28ac4b4cefc21e9b",
-        "version": 7,
-        "debugenabled": false,
-        "action": "media_player.volume_set",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "media_player.desk"
-        ],
-        "labelId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "media_player",
-        "service": "volume_set",
-        "x": 410,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "ae5ac8079bc238ff",
         "type": "debug",
         "z": "de6f18bf45cc2384",
@@ -470,6 +392,153 @@
         "wires": [
             [
                 "cf69238bf8354f69"
+            ]
+        ]
+    },
+    {
+        "id": "438e7f39d3acd600",
+        "type": "debug",
+        "z": "d3d8fc31a710b082",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "62f3d9cbdea5d295",
+        "type": "esphome-in",
+        "z": "d3d8fc31a710b082",
+        "name": "Play Pause Knob",
+        "device": "e2244eb88135572b",
+        "entity": "4161238302",
+        "topic": "",
+        "bleaddress": "",
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "25c6eddb375b9761"
+            ]
+        ]
+    },
+    {
+        "id": "25c6eddb375b9761",
+        "type": "api-current-state",
+        "z": "d3d8fc31a710b082",
+        "name": "Check if playing",
+        "server": "28ac4b4cefc21e9b",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "playing",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "media_player.desk",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 370,
+        "y": 160,
+        "wires": [
+            [
+                "aec5d27009b2d7e2"
+            ],
+            [
+                "b145e31a10ec7c5b"
+            ]
+        ]
+    },
+    {
+        "id": "aec5d27009b2d7e2",
+        "type": "api-call-service",
+        "z": "d3d8fc31a710b082",
+        "name": "Pause Media",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.media_pause",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "media_pause",
+        "x": 560,
+        "y": 120,
+        "wires": [
+            [
+                "438e7f39d3acd600"
+            ]
+        ]
+    },
+    {
+        "id": "b145e31a10ec7c5b",
+        "type": "api-call-service",
+        "z": "d3d8fc31a710b082",
+        "name": "Play Media",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.media_play",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "media_play",
+        "x": 560,
+        "y": 200,
+        "wires": [
+            [
+                "438e7f39d3acd600"
             ]
         ]
     }

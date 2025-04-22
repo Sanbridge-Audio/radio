@@ -15,6 +15,14 @@
         "env": []
     },
     {
+        "id": "2c259f923bd3ecf9",
+        "type": "tab",
+        "label": "Play/Pause",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "2bddea5507d7d95a",
         "type": "esphome-device",
         "name": "Controls Radio",
@@ -384,6 +392,176 @@
         "wires": [
             [
                 "cf69238bf8354f69"
+            ]
+        ]
+    },
+    {
+        "id": "4ae369dd31cc54d1",
+        "type": "debug",
+        "z": "2c259f923bd3ecf9",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "8bf41113bd7b0625",
+        "type": "esphome-in",
+        "z": "2c259f923bd3ecf9",
+        "name": "Play Pause Knob",
+        "device": "e2244eb88135572b",
+        "entity": "4161238302",
+        "topic": "",
+        "bleaddress": "",
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "337e7cc69b135966"
+            ]
+        ]
+    },
+    {
+        "id": "959c38a72c5ad2c9",
+        "type": "api-current-state",
+        "z": "2c259f923bd3ecf9",
+        "name": "Check if playing",
+        "server": "28ac4b4cefc21e9b",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "playing",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "media_player.desk",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 470,
+        "y": 160,
+        "wires": [
+            [
+                "f43ca62a2ff489eb"
+            ],
+            [
+                "3e829b6646d66696"
+            ]
+        ]
+    },
+    {
+        "id": "f43ca62a2ff489eb",
+        "type": "api-call-service",
+        "z": "2c259f923bd3ecf9",
+        "name": "Pause Media",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.media_pause",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "media_pause",
+        "x": 560,
+        "y": 120,
+        "wires": [
+            [
+                "4ae369dd31cc54d1"
+            ]
+        ]
+    },
+    {
+        "id": "3e829b6646d66696",
+        "type": "api-call-service",
+        "z": "2c259f923bd3ecf9",
+        "name": "Play Media",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.media_play",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "media_play",
+        "x": 560,
+        "y": 200,
+        "wires": [
+            [
+                "4ae369dd31cc54d1"
+            ]
+        ]
+    },
+    {
+        "id": "337e7cc69b135966",
+        "type": "switch",
+        "z": "2c259f923bd3ecf9",
+        "name": "Only on button press",
+        "property": "payload.state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 300,
+        "y": 160,
+        "wires": [
+            [
+                "959c38a72c5ad2c9"
             ]
         ]
     }
