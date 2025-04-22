@@ -1,0 +1,48 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.8.2
+2 info using node@v20.19.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/.npmrc
+5 silly config load:file:/usr/src/node-red/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install node-red-contrib-home-assistant-ws@0.0.1
+8 verbose argv "install" "--no-audit" "--no-update-notifier" "--no-fund" "--save" "--save-prefix" "~" "--omit" "dev" "--engine-strict" "node-red-contrib-home-assistant-ws@0.0.1"
+9 verbose logfile logs-max:10 dir:/data/.npm/_logs/2025-04-22T15_37_34_311Z-
+10 verbose logfile /data/.npm/_logs/2025-04-22T15_37_34_311Z-debug-0.log
+11 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+12 silly logfile done cleaning log files
+13 silly idealTree buildDeps
+14 silly fetch manifest node-red-contrib-home-assistant-ws@0.0.1
+15 silly packumentCache full:https://registry.npmjs.org/node-red-contrib-home-assistant-ws cache-miss
+16 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+17 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-home-assistant-ws 437ms (cache miss)
+18 silly packumentCache full:https://registry.npmjs.org/node-red-contrib-home-assistant-ws set size:undefined disposed:false
+19 silly placeDep ROOT node-red-contrib-home-assistant-ws@0.0.1 OK for: node-red-project@0.0.1 want: 0.0.1
+20 silly fetch manifest ws@^1.1.4
+21 silly packumentCache full:https://registry.npmjs.org/ws cache-miss
+22 http fetch GET 200 https://registry.npmjs.org/ws 67ms (cache updated)
+23 silly packumentCache full:https://registry.npmjs.org/ws set size:undefined disposed:false
+24 silly placeDep ROOT ws@1.1.5 OK for: node-red-contrib-home-assistant-ws@0.0.1 want: ^1.1.4
+25 silly fetch manifest ultron@1.0.x
+26 silly packumentCache full:https://registry.npmjs.org/ultron cache-miss
+27 silly fetch manifest options@>=0.0.5
+28 silly packumentCache full:https://registry.npmjs.org/options cache-miss
+29 http fetch GET 200 https://registry.npmjs.org/options 51ms (cache updated)
+30 silly packumentCache full:https://registry.npmjs.org/options set size:undefined disposed:false
+31 http fetch GET 200 https://registry.npmjs.org/ultron 147ms (cache updated)
+32 silly packumentCache full:https://registry.npmjs.org/ultron set size:undefined disposed:false
+33 silly placeDep ROOT options@0.0.6 OK for: ws@1.1.5 want: >=0.0.5
+34 silly placeDep ROOT ultron@1.0.2 OK for: ws@1.1.5 want: 1.0.x
+35 silly reify moves {}
+36 silly tarball no local data for node-red-contrib-home-assistant-ws@https://registry.npmjs.org/node-red-contrib-home-assistant-ws/-/node-red-contrib-home-assistant-ws-0.0.1.tgz. Extracting by manifest.
+37 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-home-assistant-ws/-/node-red-contrib-home-assistant-ws-0.0.1.tgz 71ms (cache miss)
+38 silly ADD node_modules/ultron
+39 silly ADD node_modules/options
+40 silly ADD node_modules/ws
+41 silly ADD node_modules/node-red-contrib-home-assistant-ws
+42 verbose cwd /data
+43 verbose os Linux 6.1.0-31-amd64
+44 verbose node v20.19.0
+45 verbose npm  v10.8.2
+46 verbose exit 0
+47 info ok

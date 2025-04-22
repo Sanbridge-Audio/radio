@@ -5,6 +5,7 @@
     "private": true,
     "dependencies": {
         "node-red-contrib-esphome": "~0.2.9",
+        "node-red-contrib-home-assistant-websocket": "~0.75.0",
         "node-red-contrib-mpd2": "~1.0.9"
     }
 }

@@ -15,9 +15,9 @@
         "env": []
     },
     {
-        "id": "521b880110ad2a82",
+        "id": "de6f18bf45cc2384",
         "type": "tab",
-        "label": "Flow 3",
+        "label": "Flow 2",
         "disabled": false,
         "info": "",
         "env": []
@@ -34,14 +34,6 @@
         "ble": false
     },
     {
-        "id": "ed6bbf9d05148c6d",
-        "type": "mpd2-server",
-        "name": "Desktop Radio",
-        "host": "192.168.1.212",
-        "port": 6600,
-        "password": ""
-    },
-    {
         "id": "e2244eb88135572b",
         "type": "esphome-device",
         "name": "",
@@ -51,6 +43,29 @@
         "loglevel": "0",
         "logdump": false,
         "ble": false
+    },
+    {
+        "id": "28ac4b4cefc21e9b",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": false,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": 30,
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": ": ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "default",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": false
     },
     {
         "id": "e1d4e5f5.0d6d58",
@@ -277,22 +292,6 @@
         ]
     },
     {
-        "id": "c96b26618f36c144",
-        "type": "debug",
-        "z": "238164dacc2f3e2c",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 400,
-        "y": 220,
-        "wires": []
-    },
-    {
         "id": "4f7699b6b59a2579",
         "type": "debug",
         "z": "238164dacc2f3e2c",
@@ -328,16 +327,149 @@
         "id": "ed23088fbf647cab",
         "type": "esphome-in",
         "z": "238164dacc2f3e2c",
-        "name": "Volume Button",
+        "name": "Volume Knob",
         "device": "e2244eb88135572b",
         "entity": "3355093594",
         "topic": "",
         "bleaddress": "",
-        "x": 160,
+        "x": 150,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4ff7bb286816998b",
+        "type": "api-call-service",
+        "z": "238164dacc2f3e2c",
+        "name": "",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.volume_set",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "volume_set",
+        "x": 410,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ae5ac8079bc238ff",
+        "type": "debug",
+        "z": "de6f18bf45cc2384",
+        "name": "Raw Encoder Value",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "624a8c6e5c1ff826",
+        "type": "debug",
+        "z": "de6f18bf45cc2384",
+        "name": "Volume Set Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e0b45d5b9fdc4493",
+        "type": "esphome-in",
+        "z": "de6f18bf45cc2384",
+        "name": "Volume Knob",
+        "device": "e2244eb88135572b",
+        "entity": "3355093594",
+        "topic": "",
+        "bleaddress": "",
+        "x": 90,
         "y": 220,
         "wires": [
             [
-                "c96b26618f36c144"
+                "ae5ac8079bc238ff",
+                "cc9b66fa2cee6869"
+            ]
+        ]
+    },
+    {
+        "id": "cf69238bf8354f69",
+        "type": "api-call-service",
+        "z": "de6f18bf45cc2384",
+        "name": "Set Media Player Volume",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.volume_set",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "{\"volume_level\":{{payload.volume_level}}}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "volume_set",
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "624a8c6e5c1ff826"
+            ]
+        ]
+    },
+    {
+        "id": "cc9b66fa2cee6869",
+        "type": "function",
+        "z": "de6f18bf45cc2384",
+        "name": "Convert to volume level",
+        "func": "// Print the raw payload to debug\nnode.warn(\"Raw payload: \" + JSON.stringify(msg.payload));\n\n// Get the state value from the ESPHome object\nlet encoderValue = 0;\n\n// Check if payload has a state property (from ESPHome)\nif (msg.payload && typeof msg.payload === 'object' && 'state' in msg.payload) {\n    encoderValue = Number(msg.payload.state);\n    node.warn(\"Found state property: \" + encoderValue);\n} else if (!isNaN(Number(msg.payload))) {\n    // If it's just a simple number\n    encoderValue = Number(msg.payload);\n} else {\n    node.warn(\"Invalid encoder format, using 0\");\n}\n\n// Make sure it's a valid number\nif (isNaN(encoderValue)) {\n    node.warn(\"Invalid encoder value, using 0\");\n    encoderValue = 0;\n}\n\n// Scale the incoming value to 0-1 range\n// Adjust the divisor (100) based on your encoder's range\nlet volume = encoderValue / 100;\n\n// Ensure volume is between 0 and 1\nvolume = Math.min(Math.max(volume, 0), 1);\n\n// Round to 2 decimal places to avoid floating point issues\nvolume = Math.round(volume * 100) / 100;\n\n// Format for direct use in Home Assistant\nmsg.payload = {\n    volume_level: volume\n};\n\n// Log the output for debugging\nnode.warn(\"Sending to HA: \" + JSON.stringify(msg.payload));\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 220,
+        "wires": [
+            [
+                "cf69238bf8354f69"
             ]
         ]
     }

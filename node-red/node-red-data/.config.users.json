@@ -14,10 +14,16 @@
             },
             "tours": {
                 "welcome": "4.0.9"
+            },
+            "dialog": {
+                "export": {
+                    "pretty": true,
+                    "json-view": false
+                }
             }
         },
         "debug": {
-            "filter": "filterSelected",
+            "filter": "filterCurrent",
             "filteredNodes": [
                 "e3d8e1c0.0a5c4",
                 "4f7699b6b59a2579",

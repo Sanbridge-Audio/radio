@@ -6,8 +6,10 @@ services:
       - TZ=America/New_York
     ports:
       - "1880:1880"
-    networks:
-      - node-red-net
+    network_mode: host
+#    networks:
+#      - node-red-net
+#      - host
     volumes:
       - ./node-red-data:/data
 #  gpiod:
@@ -18,5 +20,5 @@ services:
 #    restart: unless-stopped
 # volumes:
 #   node-red-data:
-networks:
-  node-red-net:
+#networks:
+#  node-red-net:

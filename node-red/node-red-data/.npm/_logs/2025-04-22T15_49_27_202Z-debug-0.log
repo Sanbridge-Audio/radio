@@ -1,0 +1,34 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.8.2
+2 info using node@v20.19.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/.npmrc
+5 silly config load:file:/usr/src/node-red/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm remove node-red-contrib-home-assistant-ws
+8 verbose argv "remove" "--no-audit" "--no-update-notifier" "--no-fund" "--save" "node-red-contrib-home-assistant-ws"
+9 verbose logfile logs-max:10 dir:/data/.npm/_logs/2025-04-22T15_49_27_202Z-
+10 verbose logfile /data/.npm/_logs/2025-04-22T15_49_27_202Z-debug-0.log
+11 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+12 silly logfile done cleaning log files
+13 silly idealTree buildDeps
+14 silly reify mark retired [ '/data/node_modules/node-red-contrib-home-assistant-ws' ]
+15 silly reify mark retired [ '/data/node_modules/options' ]
+16 silly reify mark retired [ '/data/node_modules/ultron' ]
+17 silly reify mark retired [ '/data/node_modules/ws' ]
+18 silly reify moves {
+18 silly reify   '/data/node_modules/node-red-contrib-home-assistant-ws': '/data/node_modules/.node-red-contrib-home-assistant-ws-UM0gWyqd',
+18 silly reify   '/data/node_modules/options': '/data/node_modules/.options-OOf92lN1',
+18 silly reify   '/data/node_modules/ultron': '/data/node_modules/.ultron-bwq0xtHM',
+18 silly reify   '/data/node_modules/ws': '/data/node_modules/.ws-B5PabsSn'
+18 silly reify }
+19 silly REMOVE node_modules/ws
+20 silly REMOVE node_modules/ultron
+21 silly REMOVE node_modules/options
+22 silly REMOVE node_modules/node-red-contrib-home-assistant-ws
+23 verbose cwd /data
+24 verbose os Linux 6.1.0-31-amd64
+25 verbose node v20.19.0
+26 verbose npm  v10.8.2
+27 verbose exit 0
+28 info ok

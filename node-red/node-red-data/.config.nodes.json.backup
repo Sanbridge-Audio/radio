@@ -476,5 +476,25 @@
                 "file": "/data/node_modules/node-red-contrib-esphome/build/nodes/out.js"
             }
         }
+    },
+    "node-red-contrib-mpd2": {
+        "name": "node-red-contrib-mpd2",
+        "version": "1.0.9",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "mpd2-command": {
+                "name": "mpd2-command",
+                "types": [
+                    "mpd2",
+                    "mpd2-server"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-mpd2",
+                "file": "/data/node_modules/node-red-contrib-mpd2/mpd.js"
+            }
+        }
     }
 }
