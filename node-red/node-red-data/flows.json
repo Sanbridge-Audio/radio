@@ -25,8 +25,8 @@
     {
         "id": "2bddea5507d7d95a",
         "type": "esphome-device",
-        "name": "Office",
-        "host": "192.168.1.206",
+        "name": "Controls Radio",
+        "host": "192.168.1.155",
         "port": 6053,
         "reconnect": 15,
         "loglevel": "0",
@@ -40,6 +40,17 @@
         "host": "192.168.1.212",
         "port": 6600,
         "password": ""
+    },
+    {
+        "id": "e2244eb88135572b",
+        "type": "esphome-device",
+        "name": "",
+        "host": "192.168.1.155",
+        "port": 6053,
+        "reconnect": 15,
+        "loglevel": "0",
+        "logdump": false,
+        "ble": false
     },
     {
         "id": "e1d4e5f5.0d6d58",
@@ -266,23 +277,6 @@
         ]
     },
     {
-        "id": "1a0693acfac0c1a5",
-        "type": "esphome-in",
-        "z": "238164dacc2f3e2c",
-        "name": "Office",
-        "device": "2bddea5507d7d95a",
-        "entity": "1315184542",
-        "topic": "",
-        "bleaddress": "",
-        "x": 150,
-        "y": 220,
-        "wires": [
-            [
-                "c96b26618f36c144"
-            ]
-        ]
-    },
-    {
         "id": "c96b26618f36c144",
         "type": "debug",
         "z": "238164dacc2f3e2c",
@@ -297,23 +291,6 @@
         "x": 400,
         "y": 220,
         "wires": []
-    },
-    {
-        "id": "8ae0d1af6f438c77",
-        "type": "esphome-in",
-        "z": "238164dacc2f3e2c",
-        "name": "Volume Knob",
-        "device": "2bddea5507d7d95a",
-        "entity": "352477991",
-        "topic": "",
-        "bleaddress": "",
-        "x": 150,
-        "y": 340,
-        "wires": [
-            [
-                "4f7699b6b59a2579"
-            ]
-        ]
     },
     {
         "id": "4f7699b6b59a2579",
@@ -332,23 +309,6 @@
         "wires": []
     },
     {
-        "id": "5dc3bbd818103ef5",
-        "type": "esphome-in",
-        "z": "238164dacc2f3e2c",
-        "name": "Start Button",
-        "device": "2bddea5507d7d95a",
-        "entity": "2344154970",
-        "topic": "",
-        "bleaddress": "",
-        "x": 159,
-        "y": 410,
-        "wires": [
-            [
-                "e32ecb971068944f"
-            ]
-        ]
-    },
-    {
         "id": "e32ecb971068944f",
         "type": "debug",
         "z": "238164dacc2f3e2c",
@@ -363,5 +323,22 @@
         "x": 404,
         "y": 408,
         "wires": []
+    },
+    {
+        "id": "ed23088fbf647cab",
+        "type": "esphome-in",
+        "z": "238164dacc2f3e2c",
+        "name": "Volume Button",
+        "device": "e2244eb88135572b",
+        "entity": "3355093594",
+        "topic": "",
+        "bleaddress": "",
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "c96b26618f36c144"
+            ]
+        ]
     }
 ]
