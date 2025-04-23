@@ -10,14 +10,22 @@
         "id": "de6f18bf45cc2384",
         "type": "tab",
         "label": "Volume",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2c259f923bd3ecf9",
+        "type": "tab",
+        "label": "Play/Pause",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "d3d8fc31a710b082",
+        "id": "d517237011980e40",
         "type": "tab",
-        "label": "Play/Pause",
+        "label": "Volume",
         "disabled": false,
         "info": "",
         "env": []
@@ -381,8 +389,9 @@
         "type": "function",
         "z": "de6f18bf45cc2384",
         "name": "Convert to volume level",
-        "func": "// Print the raw payload to debug\nnode.warn(\"Raw payload: \" + JSON.stringify(msg.payload));\n\n// Get the state value from the ESPHome object\nlet encoderValue = 0;\n\n// Check if payload has a state property (from ESPHome)\nif (msg.payload && typeof msg.payload === 'object' && 'state' in msg.payload) {\n    encoderValue = Number(msg.payload.state);\n    node.warn(\"Found state property: \" + encoderValue);\n} else if (!isNaN(Number(msg.payload))) {\n    // If it's just a simple number\n    encoderValue = Number(msg.payload);\n} else {\n    node.warn(\"Invalid encoder format, using 0\");\n}\n\n// Make sure it's a valid number\nif (isNaN(encoderValue)) {\n    node.warn(\"Invalid encoder value, using 0\");\n    encoderValue = 0;\n}\n\n// Scale the incoming value to 0-1 range\n// Adjust the divisor (100) based on your encoder's range\nlet volume = encoderValue / 100;\n\n// Ensure volume is between 0 and 1\nvolume = Math.min(Math.max(volume, 0), 1);\n\n// Round to 2 decimal places to avoid floating point issues\nvolume = Math.round(volume * 100) / 100;\n\n// Format for direct use in Home Assistant\nmsg.payload = {\n    volume_level: volume\n};\n\n// Log the output for debugging\nnode.warn(\"Sending to HA: \" + JSON.stringify(msg.payload));\n\nreturn msg;",
+        "func": "// Print the raw payload to debug\nnode.warn(\"Raw payload: \" + JSON.stringify(msg.payload));\n\n// Get the state value from the ESPHome object\nlet encoderValue = 0;\n\n// Check if payload has a state property (from ESPHome)\nif (msg.payload && typeof msg.payload === 'object' && 'state' in msg.payload) {\n    encoderValue = Number(msg.payload.state);\n    node.warn(\"Found state property: \" + encoderValue);\n} else if (!isNaN(Number(msg.payload))) {\n    // If it's just a simple number\n    encoderValue = Number(msg.payload);\n} else {\n    node.warn(\"Invalid encoder format, using 0\");\n}\n\n// Make sure it's a valid number\nif (isNaN(encoderValue)) {\n    node.warn(\"Invalid encoder value, using 0\");\n    encoderValue = 0;\n}\n\n// First scale the incoming value to 0-1 range\nlet normalizedValue = encoderValue / 100;\n\n// Ensure the normalized value is between 0 and 1\nnormalizedValue = Math.min(Math.max(normalizedValue, 0), 1);\n\n// Apply logarithmic scaling for more natural volume control\nlet volume = Math.pow(normalizedValue, 2);\n\n// Round to 3 decimal places to avoid floating point issues\nvolume = Math.round(volume * 1000) / 1000;\n\n// Format for direct use in Home Assistant\nmsg.payload = {\n    volume_level: volume\n};\n\n// Log the output for debugging\nnode.warn(\"Sending to HA: \" + JSON.stringify(msg.payload));\nnode.warn(\"Linear value: \" + normalizedValue + \", Logarithmic value: \" + volume);\n\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -396,9 +405,9 @@
         ]
     },
     {
-        "id": "438e7f39d3acd600",
+        "id": "4ae369dd31cc54d1",
         "type": "debug",
-        "z": "d3d8fc31a710b082",
+        "z": "2c259f923bd3ecf9",
         "name": "debug 1",
         "active": true,
         "tosidebar": true,
@@ -413,9 +422,9 @@
         "wires": []
     },
     {
-        "id": "62f3d9cbdea5d295",
+        "id": "8bf41113bd7b0625",
         "type": "esphome-in",
-        "z": "d3d8fc31a710b082",
+        "z": "2c259f923bd3ecf9",
         "name": "Play Pause Knob",
         "device": "e2244eb88135572b",
         "entity": "4161238302",
@@ -425,14 +434,14 @@
         "y": 160,
         "wires": [
             [
-                "25c6eddb375b9761"
+                "337e7cc69b135966"
             ]
         ]
     },
     {
-        "id": "25c6eddb375b9761",
+        "id": "959c38a72c5ad2c9",
         "type": "api-current-state",
-        "z": "d3d8fc31a710b082",
+        "z": "2c259f923bd3ecf9",
         "name": "Check if playing",
         "server": "28ac4b4cefc21e9b",
         "version": 3,
@@ -465,21 +474,21 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 370,
+        "x": 470,
         "y": 160,
         "wires": [
             [
-                "aec5d27009b2d7e2"
+                "f43ca62a2ff489eb"
             ],
             [
-                "b145e31a10ec7c5b"
+                "3e829b6646d66696"
             ]
         ]
     },
     {
-        "id": "aec5d27009b2d7e2",
+        "id": "f43ca62a2ff489eb",
         "type": "api-call-service",
-        "z": "d3d8fc31a710b082",
+        "z": "2c259f923bd3ecf9",
         "name": "Pause Media",
         "server": "28ac4b4cefc21e9b",
         "version": 7,
@@ -505,14 +514,14 @@
         "y": 120,
         "wires": [
             [
-                "438e7f39d3acd600"
+                "4ae369dd31cc54d1"
             ]
         ]
     },
     {
-        "id": "b145e31a10ec7c5b",
+        "id": "3e829b6646d66696",
         "type": "api-call-service",
-        "z": "d3d8fc31a710b082",
+        "z": "2c259f923bd3ecf9",
         "name": "Play Media",
         "server": "28ac4b4cefc21e9b",
         "version": 7,
@@ -538,7 +547,198 @@
         "y": 200,
         "wires": [
             [
-                "438e7f39d3acd600"
+                "4ae369dd31cc54d1"
+            ]
+        ]
+    },
+    {
+        "id": "337e7cc69b135966",
+        "type": "switch",
+        "z": "2c259f923bd3ecf9",
+        "name": "Only on button press",
+        "property": "payload.state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 300,
+        "y": 160,
+        "wires": [
+            [
+                "959c38a72c5ad2c9"
+            ]
+        ]
+    },
+    {
+        "id": "c26b749fbe544248",
+        "type": "debug",
+        "z": "d517237011980e40",
+        "name": "Raw Encoder Value",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1c14b9d642684db9",
+        "type": "esphome-in",
+        "z": "d517237011980e40",
+        "name": "Volume Knob",
+        "device": "e2244eb88135572b",
+        "entity": "3355093594",
+        "topic": "",
+        "bleaddress": "",
+        "x": 90,
+        "y": 240,
+        "wires": [
+            [
+                "c26b749fbe544248",
+                "52cab3063e078920"
+            ]
+        ]
+    },
+    {
+        "id": "52cab3063e078920",
+        "type": "function",
+        "z": "d517237011980e40",
+        "name": "Process Volume",
+        "func": "// Get the encoder value\nlet encoderValue = 0;\n\nif (msg.payload && typeof msg.payload === 'object' && 'state' in msg.payload) {\n    encoderValue = Number(msg.payload.state);\n} else if (!isNaN(Number(msg.payload))) {\n    encoderValue = Number(msg.payload);\n}\n\n// Store original value for debugging\nmsg.originalValue = encoderValue;\n\n// First scale the incoming value to 0-1 range\nlet normalizedValue = encoderValue / 100;\n\n// Ensure the normalized value is between 0 and 1\nnormalizedValue = Math.min(Math.max(normalizedValue, 0), 1);\n\n// Apply logarithmic scaling for more natural volume control\nlet volume = Math.pow(normalizedValue, 2);\n\n// Round to 3 decimal places to avoid floating point issues\nvolume = Math.round(volume * 1000) / 1000;\n\n// Store for debugging\nmsg.linearValue = normalizedValue;\nmsg.logValue = volume;\n\n// Overwrite the original message with just the numeric volume level\nmsg.payload = volume;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 240,
+        "wires": [
+            [
+                "5e43bfdfb131f678"
+            ]
+        ]
+    },
+    {
+        "id": "5e43bfdfb131f678",
+        "type": "api-current-state",
+        "z": "d517237011980e40",
+        "name": "Media Player State",
+        "server": "28ac4b4cefc21e9b",
+        "version": 5,
+        "outputs": 2,
+        "halt_if": "playing",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "media_player.desk",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 450,
+        "y": 240,
+        "wires": [
+            [
+                "6d91ec5a62f40d32"
+            ],
+            [
+                "05fe72058b6c9ab3"
+            ]
+        ]
+    },
+    {
+        "id": "6d91ec5a62f40d32",
+        "type": "debug",
+        "z": "d517237011980e40",
+        "name": "Setting Volume",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "05fe72058b6c9ab3",
+        "type": "debug",
+        "z": "d517237011980e40",
+        "name": "Not Playing",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "9e67ba81964f130c",
+        "type": "api-call-service",
+        "z": "d517237011980e40",
+        "name": "Set Volume",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.volume_set",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "{\"volume_level\":{{payload}}}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "volume_set",
+        "x": 640,
+        "y": 200,
+        "wires": [
+            [
+                "6d91ec5a62f40d32"
             ]
         ]
     }
