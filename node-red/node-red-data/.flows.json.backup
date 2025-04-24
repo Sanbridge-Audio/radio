@@ -23,12 +23,49 @@
         "env": []
     },
     {
-        "id": "d517237011980e40",
+        "id": "72a281957e266000",
         "type": "tab",
         "label": "Volume",
         "disabled": false,
         "info": "",
         "env": []
+    },
+    {
+        "id": "a4a956a1d2eab81a",
+        "type": "tab",
+        "label": "Select",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "809856263be0a910",
+        "type": "tab",
+        "label": "Snapcast",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ca26a8e68b6e2b42",
+        "type": "tab",
+        "label": "Radio Dial",
+        "disabled": true,
+        "info": "Radio station selector using an absolute position rotary encoder with delayed playback",
+        "env": []
+    },
+    {
+        "id": "flow1",
+        "type": "tab",
+        "label": "Radio Dial",
+        "disabled": true
+    },
+    {
+        "id": "dbf1c1d1c9c489a6",
+        "type": "tab",
+        "label": "Radio Dial",
+        "disabled": false,
+        "info": ""
     },
     {
         "id": "2bddea5507d7d95a",
@@ -74,6 +111,166 @@
         "statusHourCycle": "default",
         "statusTimeFormat": "h:m",
         "enableGlobalContextStore": false
+    },
+    {
+        "id": "13b5d5d48f336423",
+        "type": "ui_tab",
+        "name": "Media Control",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "65551883d3ccca02",
+        "type": "ui_group",
+        "name": "LMS Control",
+        "tab": "5e7f3a9d.752204",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6bd08b3c7871bfdb",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "ae4854e176d33596",
+        "type": "ui_tab",
+        "name": "Media Control",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "19c5d8b56bbc69a4",
+        "type": "ui_tab",
+        "name": "Radio Stations",
+        "icon": "radio",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "3a524b74c3b7469b",
+        "type": "ui_group",
+        "name": "LMS Control",
+        "tab": "ae4854e176d33596",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "4c4c206ad2bd9773",
+        "type": "ui_group",
+        "name": "Radio Control",
+        "tab": "19c5d8b56bbc69a4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "2f8e8890564feef9",
+        "type": "ui_group",
+        "name": "Station Editor",
+        "tab": "19c5d8b56bbc69a4",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": true
     },
     {
         "id": "e1d4e5f5.0d6d58",
@@ -575,9 +772,9 @@
         ]
     },
     {
-        "id": "c26b749fbe544248",
+        "id": "576543b8b333aa87",
         "type": "debug",
-        "z": "d517237011980e40",
+        "z": "72a281957e266000",
         "name": "Raw Encoder Value",
         "active": true,
         "tosidebar": true,
@@ -592,9 +789,9 @@
         "wires": []
     },
     {
-        "id": "1c14b9d642684db9",
+        "id": "c68bd94c044f730f",
         "type": "esphome-in",
-        "z": "d517237011980e40",
+        "z": "72a281957e266000",
         "name": "Volume Knob",
         "device": "e2244eb88135572b",
         "entity": "3355093594",
@@ -604,34 +801,68 @@
         "y": 240,
         "wires": [
             [
-                "c26b749fbe544248",
-                "52cab3063e078920"
+                "576543b8b333aa87",
+                "b2a712c762c646b0"
             ]
         ]
     },
     {
-        "id": "52cab3063e078920",
+        "id": "84123abbf99aaa79",
+        "type": "debug",
+        "z": "72a281957e266000",
+        "name": "Not Playing",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "a9fba929149978a8",
+        "type": "debug",
+        "z": "72a281957e266000",
+        "name": "Set Volume Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b2a712c762c646b0",
         "type": "function",
-        "z": "d517237011980e40",
-        "name": "Process Volume",
-        "func": "// Get the encoder value\nlet encoderValue = 0;\n\nif (msg.payload && typeof msg.payload === 'object' && 'state' in msg.payload) {\n    encoderValue = Number(msg.payload.state);\n} else if (!isNaN(Number(msg.payload))) {\n    encoderValue = Number(msg.payload);\n}\n\n// Store original value for debugging\nmsg.originalValue = encoderValue;\n\n// First scale the incoming value to 0-1 range\nlet normalizedValue = encoderValue / 100;\n\n// Ensure the normalized value is between 0 and 1\nnormalizedValue = Math.min(Math.max(normalizedValue, 0), 1);\n\n// Apply logarithmic scaling for more natural volume control\nlet volume = Math.pow(normalizedValue, 2);\n\n// Round to 3 decimal places to avoid floating point issues\nvolume = Math.round(volume * 1000) / 1000;\n\n// Store for debugging\nmsg.linearValue = normalizedValue;\nmsg.logValue = volume;\n\n// Overwrite the original message with just the numeric volume level\nmsg.payload = volume;\n\nreturn msg;",
+        "z": "72a281957e266000",
+        "name": "Complete Volume Control",
+        "func": "// Get the state value from the ESPHome object\nlet encoderValue = 0;\nif (msg.payload && typeof msg.payload === 'object' && 'state' in msg.payload) {\n    encoderValue = Number(msg.payload.state);\n    node.warn(\"Encoder value: \" + encoderValue);\n} else {\n    return null; // Skip if no valid encoder value\n}\n\n// Scale to 0-1 range and apply logarithmic curve\nlet normalizedValue = encoderValue / 100;\nnormalizedValue = Math.min(Math.max(normalizedValue, 0), 1);\nlet volume = Math.pow(normalizedValue, 2);\nvolume = Math.round(volume * 1000) / 1000;\n\n// Create new messages for the next nodes\nlet checkStateMsg = { payload: {} };\nlet setVolumeMsg = { payload: {} };\n\n// Store the calculated volume for later use\nflow.set('calculatedVolume', volume);\n\n// Return the message to check player state\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 260,
+        "x": 290,
         "y": 240,
         "wires": [
             [
-                "5e43bfdfb131f678"
+                "c2445768ca96782d"
             ]
         ]
     },
     {
-        "id": "5e43bfdfb131f678",
+        "id": "c2445768ca96782d",
         "type": "api-current-state",
-        "z": "d517237011980e40",
+        "z": "72a281957e266000",
         "name": "Media Player State",
         "server": "28ac4b4cefc21e9b",
         "version": 5,
@@ -656,11 +887,11 @@
                 "valueType": "entity"
             }
         ],
-        "for": "0",
+        "for": 0,
         "forType": "num",
         "forUnits": "minutes",
         "override_topic": false,
-        "state_location": "payload",
+        "state_location": "state",
         "override_payload": "none",
         "entity_location": "data",
         "override_data": "none",
@@ -668,51 +899,17 @@
         "y": 240,
         "wires": [
             [
-                "6d91ec5a62f40d32"
+                "d2efbd60b5885a22"
             ],
             [
-                "05fe72058b6c9ab3"
+                "84123abbf99aaa79"
             ]
         ]
     },
     {
-        "id": "6d91ec5a62f40d32",
-        "type": "debug",
-        "z": "d517237011980e40",
-        "name": "Setting Volume",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 790,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "05fe72058b6c9ab3",
-        "type": "debug",
-        "z": "d517237011980e40",
-        "name": "Not Playing",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 790,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "9e67ba81964f130c",
+        "id": "652aae2dc6e82509",
         "type": "api-call-service",
-        "z": "d517237011980e40",
+        "z": "72a281957e266000",
         "name": "Set Volume",
         "server": "28ac4b4cefc21e9b",
         "version": 7,
@@ -735,11 +932,637 @@
         "domain": "media_player",
         "service": "volume_set",
         "x": 640,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
-                "6d91ec5a62f40d32"
+                "a9fba929149978a8"
             ]
         ]
+    },
+    {
+        "id": "d2efbd60b5885a22",
+        "type": "function",
+        "z": "72a281957e266000",
+        "name": "Prepare Volume Message",
+        "func": "// Get the volume value from flow storage\nlet volume = flow.get('calculatedVolume');\n\nnode.warn(\"Setting volume to: \" + volume);\n\n// Set as direct numeric payload\nmsg.payload = volume;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 180,
+        "wires": [
+            [
+                "652aae2dc6e82509"
+            ]
+        ]
+    },
+    {
+        "id": "a6040bbe2125e59f",
+        "type": "api-call-service",
+        "z": "a4a956a1d2eab81a",
+        "name": "",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.browse_media",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "browse_media",
+        "x": 500,
+        "y": 180,
+        "wires": [
+            [
+                "88e614a5fad42c43"
+            ]
+        ]
+    },
+    {
+        "id": "cb438ae1fb0347fe",
+        "type": "esphome-in",
+        "z": "a4a956a1d2eab81a",
+        "name": "Selector Button",
+        "device": "e2244eb88135572b",
+        "entity": "1110226203",
+        "topic": "",
+        "bleaddress": "",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "a6040bbe2125e59f"
+            ]
+        ]
+    },
+    {
+        "id": "88e614a5fad42c43",
+        "type": "debug",
+        "z": "a4a956a1d2eab81a",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "fbd155ea8ca55deb",
+        "type": "api-call-service",
+        "z": "809856263be0a910",
+        "name": "",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.kitchen_living_snapcast_group"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "select_source",
+        "x": 350,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e179b292c4840841",
+        "type": "esphome-in",
+        "z": "809856263be0a910",
+        "name": "Selector Button",
+        "device": "e2244eb88135572b",
+        "entity": "3422739041",
+        "topic": "",
+        "bleaddress": "",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "fbd155ea8ca55deb"
+            ]
+        ]
+    },
+    {
+        "id": "e7e3bdf7ffbbb009",
+        "type": "esphome-in",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Rotary Encoder",
+        "device": "e2244eb88135572b",
+        "entity": "1110226203",
+        "topic": "",
+        "bleaddress": "",
+        "x": 100,
+        "y": 180,
+        "wires": [
+            [
+                "c8475344881b71ce",
+                "33c8aa6b0f805e36"
+            ]
+        ]
+    },
+    {
+        "id": "d83b66476d15fd2b",
+        "type": "debug",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Station Number Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "d1e8f51bc8263417",
+        "type": "api-call-service",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Play Station",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.play_media",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "{\n    \"media_content_id\": \"{{contentId}}\",\n    \"media_content_type\": \"{{contentType}}\"\n}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "play_media",
+        "x": 780,
+        "y": 240,
+        "wires": [
+            [
+                "5520879110c7cd73"
+            ]
+        ]
+    },
+    {
+        "id": "5520879110c7cd73",
+        "type": "debug",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Play Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "6d7f7da98b2f63a6",
+        "type": "debug",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Station Info",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "c8475344881b71ce",
+        "type": "debug",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Raw Encoder Input",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "33c8aa6b0f805e36",
+        "type": "function",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Convert to Station Number",
+        "func": "// We're receiving an absolute position value, not a relative change\n// The encoder is sending {state: X, missingState: false}\n\n// Extract the absolute position\nconst absolutePosition = msg.payload.state;\n\n// Map the absolute position to a station number between 1-20\n// We'll use modulo to wrap around\nlet stationNumber = (absolutePosition % 20);\n// We need 1-20, not 0-19\nif (stationNumber === 0) stationNumber = 20;\n\n// Store the current position for reference\nflow.set('lastPosition', absolutePosition);\nflow.set('stationNumber', stationNumber);\n\n// Only trigger if the station number has changed\nconst lastStationNumber = flow.get('lastStationNumber');\nif (stationNumber === lastStationNumber) {\n    // No change, don't trigger\n    return null;\n}\n\n// Update the last station number\nflow.set('lastStationNumber', stationNumber);\n\n// Mark the time of the last change\nflow.set('lastChangeTime', Date.now());\n\n// Return the mapped station number\nreturn {\n    payload: stationNumber,\n    topic: \"station_number\",\n    absolutePosition: absolutePosition\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Initialize when flow starts\nflow.set('lastPosition', 0);\nflow.set('stationNumber', 1);\nflow.set('lastStationNumber', null);\nflow.set('lastChangeTime', 0);",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 180,
+        "wires": [
+            [
+                "d83b66476d15fd2b",
+                "654a8d384094b090"
+            ]
+        ]
+    },
+    {
+        "id": "654a8d384094b090",
+        "type": "function",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Get Station URL",
+        "func": "// Get station number from payload\nconst stationNumber = msg.payload;\n\n// Get the corresponding station URL and name\nlet url, name;\n\nswitch(stationNumber) {\n    case 1:\n        name = \"WOSU\";\n        url = \"https://wosu.streamguys1.com/Classical_128\";\n        break;\n    case 2:\n        name = \"BBC Radio 6\";\n        url = \"http://stream.live.vc.bbcmedia.co.uk/bbc_6music\";\n        break;\n    case 3:\n        name = \"Soma FM Groove Salad\";\n        url = \"http://ice1.somafm.com/groovesalad-256-mp3\";\n        break;\n    case 4:\n        name = \"Classical WETA\";\n        url = \"http://stream.weta.org:8000/fmlive\";\n        break;\n    case 5:\n        name = \"Jazz24\";\n        url = \"http://live.wostreaming.net/direct/ppm-jazz24mp3-ibc1\";\n        break;\n    case 6:\n        name = \"KEXP\";\n        url = \"http://live.kexp.org/kexp320.mp3\";\n        break;\n    case 7:\n        name = \"NPR\";\n        url = \"http://npr-ice.streamguys1.com/live.mp3\";\n        break;\n    case 8:\n        name = \"WNYC\";\n        url = \"http://fm939.wnyc.org/wnycfm\";\n        break;\n    case 9:\n        name = \"BBC World Service\";\n        url = \"http://stream.live.vc.bbcmedia.co.uk/bbc_world_service\";\n        break;\n    case 10:\n        name = \"Ambient Sleeping Pill\";\n        url = \"http://radio.stereoscenic.com/asp-h\";\n        break;\n    case 11:\n        name = \"France Inter\";\n        url = \"http://direct.franceinter.fr/live/franceinter-midfi.mp3\";\n        break;\n    case 12:\n        name = \"Triple J\";\n        url = \"http://live-radio01.mediahubaustralia.com/2TJW/aac/\";\n        break;\n    case 13:\n        name = \"WBGO Jazz\";\n        url = \"http://wbgo.streamguys.net/wbgo\";\n        break;\n    case 14:\n        name = \"Classic FM\";\n        url = \"http://media-ice.musicradio.com/ClassicFMMP3\";\n        break;\n    case 15:\n        name = \"KCRW\";\n        url = \"http://kcrw.streamguys1.com/kcrw_192k_mp3_on_air\";\n        break;\n    case 16:\n        name = \"Drone Zone\";\n        url = \"http://ice1.somafm.com/dronezone-256-mp3\";\n        break;\n    case 17:\n        name = \"Fluid\";\n        url = \"http://ice1.somafm.com/fluid-256-mp3\";\n        break;\n    case 18:\n        name = \"Deep Space One\";\n        url = \"http://ice1.somafm.com/deepspaceone-256-mp3\";\n        break;\n    case 19:\n        name = \"Indie Pop\";\n        url = \"http://ice1.somafm.com/indiepop-256-mp3\";\n        break;\n    case 20:\n        name = \"Folk Forward\";\n        url = \"http://ice1.somafm.com/folkfwd-256-mp3\";\n        break;\n    default:\n        name = \"Unknown Station\";\n        url = \"\";\n}\n\n// Set properties directly on the message\nmsg.stationName = name;\nmsg.stationNumber = stationNumber;\nmsg.stationUrl = url;\n\n// Try a different format for the media_content_id\n// Using name@url format which might display better in the player\nmsg.contentId = url;\nmsg.contentType = \"music\";\n\nnode.log(`Selected station ${stationNumber}: ${name} - ${url}`);  \n\n// Store selection in flow context so the delayed trigger can access it\nflow.set('selectedStation', {\n    stationName: name,\n    stationNumber: stationNumber,\n    stationUrl: url,\n    contentId: url,\n    contentType: \"music\"\n});\n\n// Return with these properties for display\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 240,
+        "wires": [
+            [
+                "6d7f7da98b2f63a6"
+            ]
+        ]
+    },
+    {
+        "id": "a6cd4e57f3892b10",
+        "type": "inject",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Check for station change every 1 sec",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 320,
+        "wires": [
+            [
+                "4d5f6e7a8b9c0d1e"
+            ]
+        ]
+    },
+    {
+        "id": "4d5f6e7a8b9c0d1e",
+        "type": "function",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Delayed Play Trigger",
+        "func": "// Get the current time\nconst now = Date.now();\n\n// Get the time of the last station change\nconst lastChangeTime = flow.get('lastChangeTime') || 0;\n\n// Get the selected station\nconst selectedStation = flow.get('selectedStation');\n\n// Get the last played station number\nconst lastPlayedStation = flow.get('lastPlayedStation');\n\n// If there's no selected station, exit\nif (!selectedStation) return null;\n\n// If we've already played this station, don't play it again\nif (lastPlayedStation === selectedStation.stationNumber) return null;\n\n// Check if enough time has passed since the last change (1.5 seconds)\nconst delayMs = 1500; // 1.5 seconds\nif (now - lastChangeTime < delayMs) {\n    // Not enough time has passed, do nothing\n    return null;\n}\n\n// Enough time has passed, and we have a station to play\n// Mark this station as the last played\nflow.set('lastPlayedStation', selectedStation.stationNumber);\n\n// Return the selected station data for playback\nreturn {\n    stationName: selectedStation.stationName,\n    stationNumber: selectedStation.stationNumber,\n    stationUrl: selectedStation.stationUrl,\n    contentId: selectedStation.contentId,\n    contentType: selectedStation.contentType,\n    payload: selectedStation.stationNumber,\n    topic: \"play_station\"\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Initialize when flow starts\nflow.set('lastPlayedStation', null);",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 360,
+        "wires": [
+            [
+                "95a6b7c8d9e0f1a2",
+                "d1e8f51bc8263417"
+            ]
+        ]
+    },
+    {
+        "id": "95a6b7c8d9e0f1a2",
+        "type": "debug",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Delayed Play Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "e65d9a8c3e67f1a9",
+        "type": "comment",
+        "z": "ca26a8e68b6e2b42",
+        "name": "Rotary Encoder Radio Dial with Delayed Playback",
+        "info": "",
+        "x": 240,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "b54e28a0d4e87d9c",
+        "type": "comment",
+        "z": "ca26a8e68b6e2b42",
+        "name": "1. Track encoder position",
+        "info": "",
+        "x": 180,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f91a2b8c4d9a8e70",
+        "type": "comment",
+        "z": "ca26a8e68b6e2b42",
+        "name": "2. Lookup station info (but don't play yet)",
+        "info": "",
+        "x": 220,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "a04e93b5c8c7d6a9",
+        "type": "comment",
+        "z": "ca26a8e68b6e2b42",
+        "name": "3. Only play after 1.5 seconds of no movement",
+        "info": "",
+        "x": 220,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "encoder_in",
+        "type": "esphome-in",
+        "z": "flow1",
+        "name": "Rotary Encoder",
+        "device": "e2244eb88135572b",
+        "entity": "1110226203",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "wrap_station_number"
+            ]
+        ]
+    },
+    {
+        "id": "wrap_station_number",
+        "type": "function",
+        "z": "flow1",
+        "name": "Wrap to 1–20",
+        "func": "let abs = msg.payload.state;\nlet station = abs % 20;\nstation = station === 0 ? 20 : station;\n\nlet last = flow.get('lastStation') || null;\nif (last === station) return null;\nflow.set('lastStation', station);\n\nmsg.payload = station;\nreturn msg;",
+        "outputs": 1,
+        "x": 310,
+        "y": 100,
+        "wires": [
+            [
+                "map_to_url"
+            ]
+        ]
+    },
+    {
+        "id": "map_to_url",
+        "type": "function",
+        "z": "flow1",
+        "name": "Map to Station URL",
+        "func": "const station = msg.payload;\n\nconst stations = {\n    1: { name: \"WOSU Classical 101\", url: \"https://wosu.streamguys1.com/Classical_128\" },\n    2: { name: \"BBC Radio 6\", url: \"http://stream.live.vc.bbcmedia.co.uk/bbc_6music\" },\n    3: { name: \"Jazz24\", url: \"http://live.wostreaming.net/direct/ppm-jazz24mp3-ibc1\" },\n    4: { name: \"KEXP\", url: \"http://live.kexp.org/kexp320.mp3\" },\n    5: { name: \"SomaFM Groove Salad\", url: \"http://ice1.somafm.com/groovesalad-256-mp3\" },\n    6: { name: \"Drone Zone\", url: \"http://ice1.somafm.com/dronezone-256-mp3\" },\n    7: { name: \"NPR\", url: \"http://npr-ice.streamguys1.com/live.mp3\" },\n    8: { name: \"Classic FM\", url: \"http://media-ice.musicradio.com/ClassicFMMP3\" },\n    9: { name: \"France Inter\", url: \"http://direct.franceinter.fr/live/franceinter-midfi.mp3\" },\n    10: { name: \"Triple J\", url: \"http://live-radio01.mediahubaustralia.com/2TJW/aac/\" },\n    11: { name: \"WBGO Jazz\", url: \"http://wbgo.streamguys.net/wbgo\" },\n    12: { name: \"WNYC\", url: \"http://fm939.wnyc.org/wnycfm\" },\n    13: { name: \"SomaFM Fluid\", url: \"http://ice1.somafm.com/fluid-256-mp3\" },\n    14: { name: \"Deep Space One\", url: \"http://ice1.somafm.com/deepspaceone-256-mp3\" },\n    15: { name: \"Folk Forward\", url: \"http://ice1.somafm.com/folkfwd-256-mp3\" },\n    16: { name: \"Ambient Sleeping Pill\", url: \"http://radio.stereoscenic.com/asp-h\" },\n    17: { name: \"Radio Paradise\", url: \"http://stream.radioparadise.com/aac-320\" },\n    18: { name: \"BBC World Service\", url: \"http://stream.live.vc.bbcmedia.co.uk/bbc_world_service\" },\n    19: { name: \"Classical WETA\", url: \"http://stream.weta.org:8000/fmlive\" },\n    20: { name: \"Indie Pop Rocks\", url: \"http://ice1.somafm.com/indiepop-256-mp3\" }\n};\n\nconst selected = stations[station] || { name: \"Unknown\", url: \"\" };\nmsg.payload = {\n    entity_id: \"media_player.desk\",\n    media_content_id: selected.url,\n    media_content_type: \"music\"\n};\nmsg.stationName = selected.name;\nmsg.stationNumber = station;\nreturn msg;",
+        "outputs": 1,
+        "x": 530,
+        "y": 100,
+        "wires": [
+            [
+                "play_station",
+                "debug_station"
+            ]
+        ]
+    },
+    {
+        "id": "play_station",
+        "type": "api-call-service",
+        "z": "flow1",
+        "name": "Play Station",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.media_play",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "media_player",
+        "service": "media_play",
+        "service_domain": "media_player",
+        "x": 740,
+        "y": 100,
+        "wires": [
+            [
+                "debug_play"
+            ]
+        ]
+    },
+    {
+        "id": "debug_station",
+        "type": "debug",
+        "z": "flow1",
+        "name": "Station Info",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 530,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "debug_play",
+        "type": "debug",
+        "z": "flow1",
+        "name": "Play Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 940,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "7e4382c9a271bb36",
+        "type": "esphome-in",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "Rotary Encoder",
+        "device": "e2244eb88135572b",
+        "entity": "1110226203",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "426a3abdb051bd1d"
+            ]
+        ]
+    },
+    {
+        "id": "426a3abdb051bd1d",
+        "type": "function",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "Wrap to 1–20",
+        "func": "let abs = msg.payload.state;\nlet station = abs % 20;\nstation = station === 0 ? 20 : station;\n\nlet last = flow.get('lastStation') || null;\nif (last === station) return null;\nflow.set('lastStation', station);\n\nmsg.payload = station;\nreturn msg;",
+        "outputs": 1,
+        "x": 310,
+        "y": 100,
+        "wires": [
+            [
+                "8d589d29f19fc484"
+            ]
+        ]
+    },
+    {
+        "id": "8d589d29f19fc484",
+        "type": "function",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "Map to Station URL",
+        "func": "const station = msg.payload;\n\nconst stations = {\n    1: { name: \"WOSU Classical 101\", url: \"https://wosu.streamguys1.com/Classical_128\" },\n    2: { name: \"BBC Radio 6\", url: \"http://stream.live.vc.bbcmedia.co.uk/bbc_6music\" },\n    3: { name: \"Jazz24\", url: \"http://live.wostreaming.net/direct/ppm-jazz24mp3-ibc1\" },\n    4: { name: \"KEXP\", url: \"http://live.kexp.org/kexp320.mp3\" },\n    5: { name: \"SomaFM Groove Salad\", url: \"http://ice1.somafm.com/groovesalad-256-mp3\" },\n    6: { name: \"Drone Zone\", url: \"http://ice1.somafm.com/dronezone-256-mp3\" },\n    7: { name: \"NPR\", url: \"http://npr-ice.streamguys1.com/live.mp3\" },\n    8: { name: \"Classic FM\", url: \"http://media-ice.musicradio.com/ClassicFMMP3\" },\n    9: { name: \"France Inter\", url: \"http://direct.franceinter.fr/live/franceinter-midfi.mp3\" },\n    10: { name: \"Triple J\", url: \"http://live-radio01.mediahubaustralia.com/2TJW/aac/\" },\n    11: { name: \"WBGO Jazz\", url: \"http://wbgo.streamguys.net/wbgo\" },\n    12: { name: \"WNYC\", url: \"http://fm939.wnyc.org/wnycfm\" },\n    13: { name: \"SomaFM Fluid\", url: \"http://ice1.somafm.com/fluid-256-mp3\" },\n    14: { name: \"Deep Space One\", url: \"http://ice1.somafm.com/deepspaceone-256-mp3\" },\n    15: { name: \"Folk Forward\", url: \"http://ice1.somafm.com/folkfwd-256-mp3\" },\n    16: { name: \"Ambient Sleeping Pill\", url: \"http://radio.stereoscenic.com/asp-h\" },\n    17: { name: \"Radio Paradise\", url: \"http://stream.radioparadise.com/aac-320\" },\n    18: { name: \"BBC World Service\", url: \"http://stream.live.vc.bbcmedia.co.uk/bbc_world_service\" },\n    19: { name: \"Classical WETA\", url: \"http://stream.weta.org:8000/fmlive\" },\n    20: { name: \"Indie Pop Rocks\", url: \"http://ice1.somafm.com/indiepop-256-mp3\" }\n};\n\nconst selected = stations[station] || { name: \"Unknown\", url: \"\" };\nmsg.payload = {\n    entity_id: \"media_player.desk\",\n    media_content_id: selected.url,\n    media_content_type: \"music\"\n};\nmsg.stationName = selected.name;\nmsg.stationNumber = station;\nreturn msg;",
+        "outputs": 1,
+        "x": 530,
+        "y": 100,
+        "wires": [
+            [
+                "a8625421bed52305",
+                "b2ec8ac981371f32"
+            ]
+        ]
+    },
+    {
+        "id": "a8625421bed52305",
+        "type": "api-call-service",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "Play Station",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [
+            {
+                "property": "",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "data"
+            }
+        ],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "media_player",
+        "service": "play_media",
+        "x": 750,
+        "y": 100,
+        "wires": [
+            [
+                "7ec530c71e99d67e"
+            ]
+        ]
+    },
+    {
+        "id": "b2ec8ac981371f32",
+        "type": "debug",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "Station Info",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 530,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "7ec530c71e99d67e",
+        "type": "debug",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "Play Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 940,
+        "y": 100,
+        "wires": []
     }
 ]
