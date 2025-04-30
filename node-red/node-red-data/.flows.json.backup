@@ -621,7 +621,7 @@
         "id": "4ae369dd31cc54d1",
         "type": "debug",
         "z": "2c259f923bd3ecf9",
-        "name": "debug 1",
+        "name": "Play Status",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -630,8 +630,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
-        "y": 160,
+        "x": 830,
+        "y": 80,
         "wires": []
     },
     {
@@ -643,8 +643,8 @@
         "entity": "4161238302",
         "topic": "",
         "bleaddress": "",
-        "x": 100,
-        "y": 100,
+        "x": 80,
+        "y": 80,
         "wires": [
             [
                 "337e7cc69b135966"
@@ -687,8 +687,8 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 470,
-        "y": 160,
+        "x": 480,
+        "y": 80,
         "wires": [
             [
                 "f43ca62a2ff489eb"
@@ -723,8 +723,8 @@
         "blockInputOverrides": true,
         "domain": "media_player",
         "service": "media_pause",
-        "x": 650,
-        "y": 80,
+        "x": 670,
+        "y": 40,
         "wires": [
             [
                 "4ae369dd31cc54d1"
@@ -756,8 +756,8 @@
         "blockInputOverrides": true,
         "domain": "media_player",
         "service": "media_play",
-        "x": 650,
-        "y": 280,
+        "x": 670,
+        "y": 120,
         "wires": [
             [
                 "4ae369dd31cc54d1"
@@ -779,101 +779,11 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 260,
-        "y": 220,
+        "x": 280,
+        "y": 80,
         "wires": [
             [
                 "959c38a72c5ad2c9"
-            ]
-        ]
-    },
-    {
-        "id": "622fd09feb55a2ca",
-        "type": "debug",
-        "z": "2c259f923bd3ecf9",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 460,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "489e5c522ee4f251",
-        "type": "api-current-state",
-        "z": "2c259f923bd3ecf9",
-        "name": "",
-        "server": "28ac4b4cefc21e9b",
-        "version": 3,
-        "outputs": 2,
-        "halt_if": "playing",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
-        "entity_id": "media_player.desk",
-        "state_type": "str",
-        "blockInputOverrides": true,
-        "outputProperties": [
-            {
-                "property": "payload",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entityState"
-            },
-            {
-                "property": "data",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entity"
-            }
-        ],
-        "for": "0",
-        "forType": "num",
-        "forUnits": "minutes",
-        "override_topic": false,
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
-        "x": 200,
-        "y": 380,
-        "wires": [
-            [
-                "622fd09feb55a2ca"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "304de5e519f53e4b",
-        "type": "inject",
-        "z": "2c259f923bd3ecf9",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 180,
-        "y": 280,
-        "wires": [
-            [
-                "489e5c522ee4f251"
             ]
         ]
     },
@@ -890,8 +800,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 440,
-        "y": 160,
+        "x": 310,
+        "y": 20,
         "wires": []
     },
     {
@@ -903,8 +813,8 @@
         "entity": "3355093594",
         "topic": "",
         "bleaddress": "",
-        "x": 90,
-        "y": 240,
+        "x": 70,
+        "y": 80,
         "wires": [
             [
                 "576543b8b333aa87",
@@ -925,8 +835,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 790,
-        "y": 280,
+        "x": 690,
+        "y": 60,
         "wires": []
     },
     {
@@ -942,8 +852,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 810,
-        "y": 240,
+        "x": 1070,
+        "y": 100,
         "wires": []
     },
     {
@@ -958,8 +868,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 230,
-        "y": 340,
+        "x": 290,
+        "y": 100,
         "wires": [
             [
                 "c2445768ca96782d"
@@ -977,7 +887,7 @@
         "halt_if": "playing",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "media_player.desk",
+        "entity_id": "media_player.desk_3",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -1002,8 +912,8 @@
         "override_payload": "none",
         "entity_location": "data",
         "override_data": "none",
-        "x": 450,
-        "y": 240,
+        "x": 490,
+        "y": 60,
         "wires": [
             [
                 "d2efbd60b5885a22"
@@ -1026,7 +936,7 @@
         "areaId": [],
         "deviceId": [],
         "entityId": [
-            "media_player.desk"
+            "media_player.desk_3"
         ],
         "labelId": [],
         "data": "{\"volume_level\":{{payload}}}",
@@ -1038,8 +948,8 @@
         "blockInputOverrides": true,
         "domain": "media_player",
         "service": "volume_set",
-        "x": 640,
-        "y": 240,
+        "x": 870,
+        "y": 100,
         "wires": [
             [
                 "a9fba929149978a8"
@@ -1057,8 +967,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 640,
-        "y": 180,
+        "x": 670,
+        "y": 100,
         "wires": [
             [
                 "652aae2dc6e82509"
