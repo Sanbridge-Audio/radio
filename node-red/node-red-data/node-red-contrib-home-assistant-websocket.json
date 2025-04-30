@@ -1,6 +1,8 @@
 {
   "nodes": {},
   "issues": {
-    "hidden": []
+    "hidden": [
+      "call-service-2"
+    ]
   }
 }

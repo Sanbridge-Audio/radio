@@ -62,6 +62,20 @@
         "env": []
     },
     {
+        "id": "global-entity-config",
+        "type": "tab",
+        "label": "Global Entity Configuration",
+        "disabled": false,
+        "info": "This flow configures the global Home Assistant entity reference"
+    },
+    {
+        "id": "example-flow-2",
+        "type": "tab",
+        "label": "Example Flow 2",
+        "disabled": false,
+        "info": "Another example flow that uses the same global entity"
+    },
+    {
         "id": "2bddea5507d7d95a",
         "type": "esphome-device",
         "name": "Controls Radio",
@@ -265,6 +279,15 @@
         "disp": true,
         "width": "6",
         "collapse": true
+    },
+    {
+        "id": "4b2faa03d8f59134",
+        "type": "squeezebox-server",
+        "host": "http://192.168.1.183",
+        "port": "9008",
+        "name": "Logitech Media Server",
+        "username": "",
+        "password": ""
     },
     {
         "id": "e1d4e5f5.0d6d58",
@@ -796,7 +819,8 @@
         "wires": [
             [
                 "576543b8b333aa87",
-                "b2a712c762c646b0"
+                "b2a712c762c646b0",
+                "3d071019c42dc47e"
             ]
         ]
     },
@@ -952,6 +976,159 @@
                 "652aae2dc6e82509"
             ]
         ]
+    },
+    {
+        "id": "8a46174eedd5c7c9",
+        "type": "debug",
+        "z": "72a281957e266000",
+        "name": "Not Playing",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 778,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "3d071019c42dc47e",
+        "type": "function",
+        "z": "72a281957e266000",
+        "name": "Complete Volume Control",
+        "func": "// Get the state value from the ESPHome object\nlet encoderValue = 0;\nif (msg.payload && typeof msg.payload === 'object' && 'state' in msg.payload) {\n    encoderValue = Number(msg.payload.state);\n    node.warn(\"Encoder value: \" + encoderValue);\n} else {\n    return null; // Skip if no valid encoder value\n}\n\n// Scale to 0-1 range and apply logarithmic curve\nlet normalizedValue = encoderValue / 100;\nnormalizedValue = Math.min(Math.max(normalizedValue, 0), 1);\nlet volume = Math.pow(normalizedValue, 1.5);\nvolume = Math.round(volume * 1000) / 1000;\n\n// Create new messages for the next nodes\nlet checkStateMsg = { payload: {} };\nlet setVolumeMsg = { payload: {} };\n\n// Store the calculated volume for later use\nflow.set('calculatedVolume', volume);\n\n// Return the message to check player state\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 458,
+        "y": 280,
+        "wires": [
+            [
+                "c85e5f404afe57a6"
+            ]
+        ]
+    },
+    {
+        "id": "c85e5f404afe57a6",
+        "type": "api-current-state",
+        "z": "72a281957e266000",
+        "name": "Media Player State",
+        "server": "28ac4b4cefc21e9b",
+        "version": 5,
+        "outputs": 2,
+        "halt_if": "playing",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "media_player.music_player_daemon_2",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "state",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 618,
+        "y": 320,
+        "wires": [
+            [
+                "26ca49223e4f6028"
+            ],
+            [
+                "8a46174eedd5c7c9"
+            ]
+        ]
+    },
+    {
+        "id": "26ca49223e4f6028",
+        "type": "function",
+        "z": "72a281957e266000",
+        "name": "Prepare Volume Message",
+        "func": "// Get the volume value from flow storage\nlet volume = flow.get('calculatedVolume');\n\nnode.warn(\"Setting volume to: \" + volume);\n\n// Set as direct numeric payload\nmsg.payload = volume;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 838,
+        "y": 280,
+        "wires": [
+            [
+                "55be7a372b1cf292"
+            ]
+        ]
+    },
+    {
+        "id": "55be7a372b1cf292",
+        "type": "api-call-service",
+        "z": "72a281957e266000",
+        "name": "Set Volume",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.volume_set",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.music_player_daemon_2"
+        ],
+        "labelId": [],
+        "data": "{\"volume_level\":{{payload}}}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "volume_set",
+        "x": 1050,
+        "y": 360,
+        "wires": [
+            [
+                "c4e06efd4cef0e11"
+            ]
+        ]
+    },
+    {
+        "id": "c4e06efd4cef0e11",
+        "type": "debug",
+        "z": "72a281957e266000",
+        "name": "Set Volume Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1218,
+        "y": 280,
+        "wires": []
     },
     {
         "id": "a6040bbe2125e59f",
@@ -1608,6 +1785,163 @@
         "statusType": "auto",
         "x": 550,
         "y": 20,
+        "wires": []
+    },
+    {
+        "id": "init-global-entity",
+        "type": "inject",
+        "z": "global-entity-config",
+        "name": "Initialize at Startup",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "set-global-entity"
+            ]
+        ]
+    },
+    {
+        "id": "set-global-entity",
+        "type": "function",
+        "z": "global-entity-config",
+        "name": "Set Global Entity",
+        "func": "// Store the entity ID in global context\nglobal.set('haEntity', 'media_player.desk_3');\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 120,
+        "wires": [
+            [
+                "entity-set-debug"
+            ]
+        ]
+    },
+    {
+        "id": "entity-set-debug",
+        "type": "debug",
+        "z": "global-entity-config",
+        "name": "Confirm Entity Set",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "update-entity-manual",
+        "type": "inject",
+        "z": "global-entity-config",
+        "name": "Manual Update Button",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Update Entity",
+        "payloadType": "str",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "set-global-entity"
+            ]
+        ]
+    },
+    {
+        "id": "cb8241c139bd6342",
+        "type": "squeezebox-out",
+        "z": "example-flow-2",
+        "squeezebox_server": "4b2faa03d8f59134",
+        "player_name": "Desk",
+        "command": "",
+        "x": 390,
+        "y": 260,
+        "wires": [
+            [
+                "8dbf419f3a7fb87f"
+            ]
+        ]
+    },
+    {
+        "id": "8dbf419f3a7fb87f",
+        "type": "debug",
+        "z": "example-flow-2",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "23b9d4a940154828",
+        "type": "inject",
+        "z": "example-flow-2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "pause",
+        "payloadType": "str",
+        "x": 110,
+        "y": 260,
+        "wires": [
+            [
+                "cb8241c139bd6342"
+            ]
+        ]
+    },
+    {
+        "id": "d85d8ea8689a6ced",
+        "type": "debug",
+        "z": "example-flow-2",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 360,
         "wires": []
     }
 ]

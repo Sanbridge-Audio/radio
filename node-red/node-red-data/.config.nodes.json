@@ -793,5 +793,25 @@
                 "file": "/data/node_modules/node-red-dashboard/nodes/ui_spacer.js"
             }
         }
+    },
+    "node-red-contrib-logitechmediaserver": {
+        "name": "node-red-contrib-logitechmediaserver",
+        "version": "0.1.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "squeezebox": {
+                "name": "squeezebox",
+                "types": [
+                    "squeezebox-server",
+                    "squeezebox-out"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-logitechmediaserver",
+                "file": "/data/node_modules/node-red-contrib-logitechmediaserver/squeezebox.js"
+            }
+        }
     }
 }

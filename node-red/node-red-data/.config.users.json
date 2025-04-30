@@ -30,6 +30,7 @@
                 "c96b26618f36c144"
             ]
         },
-        "menu-menu-item-palette": true
+        "menu-menu-item-palette": true,
+        "menu-menu-item-sidebar": true
     }
 }
