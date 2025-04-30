@@ -68,6 +68,22 @@
         "info": ""
     },
     {
+        "id": "1c08499b8cdb5db3",
+        "type": "tab",
+        "label": "Volume",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8f461fbe1fa2d62c",
+        "type": "tab",
+        "label": "Next Track",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "2bddea5507d7d95a",
         "type": "esphome-device",
         "name": "Controls Radio",
@@ -627,8 +643,8 @@
         "entity": "4161238302",
         "topic": "",
         "bleaddress": "",
-        "x": 170,
-        "y": 160,
+        "x": 100,
+        "y": 100,
         "wires": [
             [
                 "337e7cc69b135966"
@@ -646,7 +662,7 @@
         "halt_if": "playing",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "media_player.desk",
+        "entity_id": "media_player.desk_3",
         "state_type": "str",
         "blockInputOverrides": true,
         "outputProperties": [
@@ -695,7 +711,7 @@
         "areaId": [],
         "deviceId": [],
         "entityId": [
-            "media_player.desk"
+            "media_player.desk_3"
         ],
         "labelId": [],
         "data": "",
@@ -707,8 +723,8 @@
         "blockInputOverrides": true,
         "domain": "media_player",
         "service": "media_pause",
-        "x": 560,
-        "y": 120,
+        "x": 650,
+        "y": 80,
         "wires": [
             [
                 "4ae369dd31cc54d1"
@@ -728,7 +744,7 @@
         "areaId": [],
         "deviceId": [],
         "entityId": [
-            "media_player.desk"
+            "media_player.desk_3"
         ],
         "labelId": [],
         "data": "",
@@ -740,8 +756,8 @@
         "blockInputOverrides": true,
         "domain": "media_player",
         "service": "media_play",
-        "x": 560,
-        "y": 200,
+        "x": 650,
+        "y": 280,
         "wires": [
             [
                 "4ae369dd31cc54d1"
@@ -763,8 +779,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 300,
-        "y": 160,
+        "x": 260,
+        "y": 220,
         "wires": [
             [
                 "959c38a72c5ad2c9"
@@ -845,14 +861,15 @@
         "type": "function",
         "z": "72a281957e266000",
         "name": "Complete Volume Control",
-        "func": "// Get the state value from the ESPHome object\nlet encoderValue = 0;\nif (msg.payload && typeof msg.payload === 'object' && 'state' in msg.payload) {\n    encoderValue = Number(msg.payload.state);\n    node.warn(\"Encoder value: \" + encoderValue);\n} else {\n    return null; // Skip if no valid encoder value\n}\n\n// Scale to 0-1 range and apply logarithmic curve\nlet normalizedValue = encoderValue / 100;\nnormalizedValue = Math.min(Math.max(normalizedValue, 0), 1);\nlet volume = Math.pow(normalizedValue, 2);\nvolume = Math.round(volume * 1000) / 1000;\n\n// Create new messages for the next nodes\nlet checkStateMsg = { payload: {} };\nlet setVolumeMsg = { payload: {} };\n\n// Store the calculated volume for later use\nflow.set('calculatedVolume', volume);\n\n// Return the message to check player state\nreturn msg;",
+        "func": "// Get the state value from the ESPHome object\nlet encoderValue = 0;\nif (msg.payload && typeof msg.payload === 'object' && 'state' in msg.payload) {\n    encoderValue = Number(msg.payload.state);\n    node.warn(\"Encoder value: \" + encoderValue);\n} else {\n    return null; // Skip if no valid encoder value\n}\n\n// Scale to 0-1 range and apply logarithmic curve\nlet normalizedValue = encoderValue / 100;\nnormalizedValue = Math.min(Math.max(normalizedValue, 0), 1);\nlet volume = Math.pow(normalizedValue, 1.5);\nvolume = Math.round(volume * 1000) / 1000;\n\n// Create new messages for the next nodes\nlet checkStateMsg = { payload: {} };\nlet setVolumeMsg = { payload: {} };\n\n// Store the calculated volume for later use\nflow.set('calculatedVolume', volume);\n\n// Return the message to check player state\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 240,
+        "x": 230,
+        "y": 340,
         "wires": [
             [
                 "c2445768ca96782d"
@@ -1617,12 +1634,584 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 280,
-        "y": 280,
+        "x": 240,
+        "y": 320,
         "wires": [
             [
                 "abcdef123456789"
             ]
         ]
+    },
+    {
+        "id": "url_inject_node",
+        "type": "inject",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "WOSU Classical URL",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "radio_station",
+        "payload": "{\"url\":\"https://wosu.streamguys1.com/Classical_128\",\"name\":\"WOSU Classical\"}",
+        "payloadType": "json",
+        "x": 220,
+        "y": 420,
+        "wires": [
+            [
+                "play_media_node"
+            ]
+        ]
+    },
+    {
+        "id": "play_media_node",
+        "type": "api-call-service",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "Play Media (Template)",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.play_media",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "{\n    \"media_content_id\": \"{{payload.url}}\",\n    \"media_content_type\": \"music\",\n    \"extra\": {\n        \"thumb\": \"https://brands.home-assistant.io/_/homeassistant/logo.png\",\n        \"title\": \"{{payload.name}}\"\n    }\n}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "play_media",
+        "x": 520,
+        "y": 420,
+        "wires": [
+            [
+                "c35b07f2e74e040e"
+            ]
+        ]
+    },
+    {
+        "id": "c35b07f2e74e040e",
+        "type": "debug",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "direct_play_node",
+        "type": "inject",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "Play WOSU Classical",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "service_call_node"
+            ]
+        ]
+    },
+    {
+        "id": "service_call_node",
+        "type": "api-call-service",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "Play WOSU Classical",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": true,
+        "action": "media_player.play_media",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "{\n    \"media_content_id\": \"https://wosu.streamguys1.com/Classical_128\",\n    \"media_content_type\": \"music\"\n}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "play_media",
+        "x": 420,
+        "y": 220,
+        "wires": [
+            [
+                "debug_node"
+            ]
+        ]
+    },
+    {
+        "id": "debug_node",
+        "type": "debug",
+        "z": "dbf1c1d1c9c489a6",
+        "name": "Play Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6422f6230c2a8a36",
+        "type": "debug",
+        "z": "1c08499b8cdb5db3",
+        "name": "Raw Encoder Value",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "412738bdb6a5993d",
+        "type": "esphome-in",
+        "z": "1c08499b8cdb5db3",
+        "name": "Volume Knob",
+        "device": "e2244eb88135572b",
+        "entity": "3355093594",
+        "topic": "",
+        "bleaddress": "",
+        "x": 90,
+        "y": 240,
+        "wires": [
+            [
+                "d20ec7ea0d7303f1",
+                "6422f6230c2a8a36"
+            ]
+        ]
+    },
+    {
+        "id": "fa852e100fcdb26a",
+        "type": "debug",
+        "z": "1c08499b8cdb5db3",
+        "name": "Not Playing",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "79286e3f5c2c9e12",
+        "type": "debug",
+        "z": "1c08499b8cdb5db3",
+        "name": "Set Volume Result",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "d20ec7ea0d7303f1",
+        "type": "function",
+        "z": "1c08499b8cdb5db3",
+        "name": "Improved Volume Control",
+        "func": "// Get the encoder value directly\nlet encoderValue = Number(msg.payload.state) || 0;\n\n// Scale to 0-1 range with more responsive curve\nlet normalizedValue = encoderValue / 100;\nnormalizedValue = Math.min(Math.max(normalizedValue, 0), 1);\n\n// Use a less steep power curve (1.5 instead of 2) for more responsiveness\n// while maintaining logarithmic perception that's natural for audio\nlet volume = Math.pow(normalizedValue, 1.5);\nvolume = Math.round(volume * 100) / 100; // 2 decimal precision is enough\n\n// Set volume directly in the message\nmsg.volumeLevel = volume;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 240,
+        "wires": [
+            [
+                "61893d3c9a6b2f24"
+            ]
+        ]
+    },
+    {
+        "id": "61893d3c9a6b2f24",
+        "type": "api-current-state",
+        "z": "1c08499b8cdb5db3",
+        "name": "Media Player State",
+        "server": "28ac4b4cefc21e9b",
+        "version": 5,
+        "outputs": 2,
+        "halt_if": "playing",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "media_player.desk",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "state",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 450,
+        "y": 240,
+        "wires": [
+            [
+                "a50891842d07e0e7"
+            ],
+            [
+                "fa852e100fcdb26a"
+            ]
+        ]
+    },
+    {
+        "id": "a50891842d07e0e7",
+        "type": "api-call-service",
+        "z": "1c08499b8cdb5db3",
+        "name": "Set Volume",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.volume_set",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "{\"volume_level\":{{volumeLevel}}}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "volume_set",
+        "x": 640,
+        "y": 240,
+        "wires": [
+            [
+                "79286e3f5c2c9e12"
+            ]
+        ]
+    },
+    {
+        "id": "9f06fcda52f10e6f",
+        "type": "api-call-service",
+        "z": "8f461fbe1fa2d62c",
+        "name": "Next Track",
+        "server": "28ac4b4cefc21e9b",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.media_next_track",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.desk"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "media_player",
+        "service": "media_next_track",
+        "x": 730,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "99ded8e6ed5c7906",
+        "type": "esphome-in",
+        "z": "8f461fbe1fa2d62c",
+        "name": "Selector Button",
+        "device": "e2244eb88135572b",
+        "entity": "3422739041",
+        "topic": "",
+        "bleaddress": "",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9284f8c3803fd023",
+        "type": "switch",
+        "z": "8f461fbe1fa2d62c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "true",
+                "vt": "msg"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 330,
+        "y": 280,
+        "wires": [
+            [
+                "e18368413d88c902"
+            ]
+        ]
+    },
+    {
+        "id": "e18368413d88c902",
+        "type": "debug",
+        "z": "8f461fbe1fa2d62c",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "adb24a4ffb0b3ea9",
+        "type": "esphome-in",
+        "z": "8f461fbe1fa2d62c",
+        "name": "Selector Button",
+        "device": "2bddea5507d7d95a",
+        "entity": "3422739041",
+        "topic": "",
+        "bleaddress": "",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "21925d67b21c1930"
+            ]
+        ]
+    },
+    {
+        "id": "21925d67b21c1930",
+        "type": "switch",
+        "z": "8f461fbe1fa2d62c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "true",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "false",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "e3b39dcf5a607022"
+            ],
+            [
+                "1d9443c71a816e03"
+            ]
+        ]
+    },
+    {
+        "id": "e3b39dcf5a607022",
+        "type": "debug",
+        "z": "8f461fbe1fa2d62c",
+        "name": "True Value Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "1d9443c71a816e03",
+        "type": "debug",
+        "z": "8f461fbe1fa2d62c",
+        "name": "False Value Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "4902979e53913dff",
+        "type": "esphome-in",
+        "z": "8f461fbe1fa2d62c",
+        "name": "Selector Button",
+        "device": "e2244eb88135572b",
+        "entity": "3422739041",
+        "topic": "",
+        "bleaddress": "",
+        "x": 140,
+        "y": 380,
+        "wires": [
+            [
+                "bd9506e785a55996"
+            ]
+        ]
+    },
+    {
+        "id": "bd9506e785a55996",
+        "type": "switch",
+        "z": "8f461fbe1fa2d62c",
+        "name": "",
+        "property": "payload.state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 350,
+        "y": 420,
+        "wires": [
+            [
+                "b7b1bfce0283ab66",
+                "9f06fcda52f10e6f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "b7b1bfce0283ab66",
+        "type": "debug",
+        "z": "8f461fbe1fa2d62c",
+        "name": "True Value Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "d396b34c38585c9a",
+        "type": "debug",
+        "z": "8f461fbe1fa2d62c",
+        "name": "False Value Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 460,
+        "wires": []
     }
 ]
